@@ -101,6 +101,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -146,6 +147,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+workspace 1 output HDMI-1
+workspace 4 output DVI-D-1
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
@@ -155,20 +159,32 @@ smart_borders on
 hide_edge_borders smart
 
 for_window [class="^.*"] border pixel 1
-new_window 1pixel
 
-workspace 1 output HDMI-1 primary
-workspace 4 output DVI-D-1 secondary
+# class                 border  backgr. text    indicator child_border
+client.focused          #4b68ad #2c3e4b #eeeeee #282c34   #4b68ad
+client.focused_inactive #24272e #2c3e4b #eeeeee #484e50   #282c34   
+client.unfocused        #282c34 #282c34 #eeeeee #282c34   #282c34   
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #fffff
 
 bar {
         position top
         status_command i3status 
+        separator_symbol " / "
         colors {
-                background #323232
+            background #24272e
+            statusline #abb2bf
+
+            focused_workspace  #73b2e6 #282c34
+            active_workspace   #eeeeee #333333
+            inactive_workspace #888888 #282c34
+            urgent_workspace   #ffffff #e06c75
         }
 }
 
 exec --no-startup-id xrandr --output HDMI-1 --primary --left-of DVI-D-1
 exec --no-startup-id xinput --set-prop 10 'libinput Accel Speed' -0.60
 exec --no-startup-id xset r rate 220 35
-exec --no-startup-id feh --bg-tile ~/Imagens/black.jpg
+exec --no-startup-id feh --bg-scale ~/Imagens/leaves.png
