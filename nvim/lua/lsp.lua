@@ -7,7 +7,7 @@ vim.opt.signcolumn = "yes"
 -- map("n", "<leader>h", "<cmd>lua vim.lsp.buf.Hover()<CR>")
 -- map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 -- map("n", "<leader>sh", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
--- map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>:w<cr>")
+map("n", "<leader>ca", vim.lsp.buf.code_action)
 -- map("n", "<space>q", vim.diagnostic.setqflist)
 map("n", "<leader>rn", vim.lsp.buf.rename)
 map("n", "K", vim.lsp.buf.hover)

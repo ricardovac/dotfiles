@@ -25,6 +25,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   callback = function()
+--     vim.cmd([[highlight LineNr guibg=#0f0f0f]])
+--   end,
+-- })
+
 -- apply lua config (doesn't work lol)
 --vim.api.nvim_create_autocmd("BufWritePost", {
 --  pattern = "*.lua",

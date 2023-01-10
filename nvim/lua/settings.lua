@@ -18,6 +18,7 @@ opt.wildignore = '.git,.hg,*.o,*.a,*.class,*.jar,*.mo,*.la,*.so,*.obj,*.swp,*.jp
 opt.wildignorecase = true
 
 opt.number = true -- Show line numbers.
+opt.relativenumber = true
 opt.ruler = true -- Show cursor position.
 opt.cursorline = true -- Show cursor position.
 

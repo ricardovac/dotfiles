@@ -79,14 +79,6 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["cellular-automaton.nvim"] = {
-    commands = { "CellularAutomaton" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/opt/cellular-automaton.nvim",
-    url = "https://github.com/eandrju/cellular-automaton.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -311,13 +303,6 @@ time([[Config for nvim-autopairs]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'CellularAutomaton', function(cmdargs)
-          require('packer.load')({'cellular-automaton.nvim'}, { cmd = 'CellularAutomaton', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'cellular-automaton.nvim'}, { cmd = 'CellularAutomaton' }, _G.packer_plugins)
-          return vim.fn.getcompletion('CellularAutomaton ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,

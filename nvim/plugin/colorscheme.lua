@@ -31,13 +31,16 @@ Group.new("StatuslineError3", c.red, g.Statusline)
 Group.new("StatuslineError3", c.red:dark(), g.Statusline)
 Group.new("StatuslineError3", c.red:dark():dark(), g.Statusline)
 
+Group.new("LineNr", c.grey:dark(), c.black0)
+Group.new("Normal", nil, c.black0)
+Group.new("SignColumn", nil, c.black0)
+
 Group.new("pythonTSType", c.red)
 Group.new("goTSType", g.Type.fg:dark(), nil, g.Type)
 
 Group.new("typescriptTSConstructor", g.pythonTSType)
 Group.new("typescriptTSProperty", c.blue)
 
--- vim.cmd [[highlight WinSeparator guifg=#4e545c guibg=None]]
 Group.new("WinSeparator", nil, nil)
 
 -- I don't think I like highlights for text
@@ -53,11 +56,9 @@ Group.new("TSTitle", c.blue)
 -- the text with characters or something like that...
 -- but we'll have to stick to that for later.
 Group.new("InjectedLanguage", nil, g.Normal.bg:dark())
-
 Group.new("LspParameter", nil, nil, s.italic)
 Group.new("LspDeprecated", nil, nil, s.strikethrough)
 Group.new("@function.bracket", g.Normal, g.Normal)
 
 -- Group.new("@function.call.lua"
 vim.cmd [[highlight link @function.call.lua LuaFunctionCall]]
-

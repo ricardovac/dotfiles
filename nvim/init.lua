@@ -54,8 +54,6 @@ require 'packer'.startup({ function(use)
     setup = function() vim.keymap.set('n', '-', ':NvimTreeToggle<cr>') end,
     config = function() require("plugins.tree") end,
   })
-  use({ "eandrju/cellular-automaton.nvim", opt = true, cmd = { "CellularAutomaton" } })
-  -- use 'dstein64/vim-startuptime'
 end,
   config = { autoremove = true }
 })
