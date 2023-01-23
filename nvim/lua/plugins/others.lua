@@ -32,22 +32,22 @@ require("nvim-surround").setup({})
 -- vim.notify = require("notify")
 
 
--- require 'hlslens'.setup({})
+require 'hlslens'.setup({})
 
 
--- require 'yanky'.setup({
---   highlight = {
---     timer = 200
---   }
--- })
--- require 'telescope'.load_extension 'yank_history'
--- map("n", "<leader>mp", ":Telescope yank_history<cr>")
--- map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
--- map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
--- map("n", "<c-n>", "<Plug>(YankyCycleForward)")
--- map("n", "<c-p>", "<Plug>(YankyCycleBackward)")
--- map("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
--- map("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+require 'yanky'.setup({
+  highlight = {
+    timer = 200
+  }
+})
+require 'telescope'.load_extension 'yank_history'
+map("n", "<leader>mp", ":Telescope yank_history<cr>")
+map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+map("n", "<c-n>", "<Plug>(YankyCycleForward)")
+map("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+map("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+map("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
 
 
 -- ripgrep
@@ -69,8 +69,3 @@ map('n', '<leader>wg', ":Rg <C-R><C-W> ")
 --   -- The `under_cursor` option is disabled when this cutoff is hit
 --   large_file_cutoff = 9999,
 -- })
-
-
-require('iswap').setup { keys = 'arstdhneio' }
-map("n", "gw", ":ISwapWithRight<cr>")
-map("n", "<leader>is", ":ISwap<cr>")

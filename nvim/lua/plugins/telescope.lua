@@ -28,6 +28,13 @@ map("n", "<C-e>", builtin.diagnostics)
 local tel = require 'telescope'
 tel.setup {
   defaults = {
+    prompt_prefix = "   ",
+    selection_caret = "  ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "ascending",
+    layout_strategy = "vertical",
     -- Default configuration for telescope goes here:
     -- config_key = value,
     file_ignore_patterns = { "node_modules", "target" },
@@ -41,11 +48,14 @@ tel.setup {
     scroll_strategy = 'limit',
     layout_config = {
       horizontal = {
-        height = 0.95,
+        height = 0.80,
         preview_cutoff = 120,
-        prompt_position = "bottom",
-        width = 0.95
+        prompt_position = "top",
+        width = 0.87
       }
+    },
+    vertical = {
+      mirror = false,
     },
     dynamic_preview_title = true
   },
@@ -59,6 +69,10 @@ tel.setup {
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     }
-  }
+  },
+  winblend = 0,
+  border = {},
+  borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+  color_devicons = true,
 }
 tel.load_extension 'fzf'

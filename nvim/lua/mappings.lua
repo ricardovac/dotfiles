@@ -94,3 +94,34 @@ map('c', '%%', "<C-R>=expand('%:h').'/'<cr>")
 
 -- Jump to line AND col
 map('n', "'", '`')
+
+map("n", "<leader>df", ':cd ~/.config/nvim/<CR>')
+
+-- Java
+-- map("n", "<F9>", function() run_spring_boot() end)
+-- map("n", "<F10>", function() run_spring_boot(true) end)
+-- map('n', '<leader>da', ':lua attach_to_debug()<CR>')
+-- map("n", "<F4>", ':lua require"dap".run({ type = "java", request = "attach", name = "Debug (Attach) - Remote", hostName = "127.0.0.1", port = 5005 })<CR>')
+
+-- map('n', '<F5>', ':lua require"dap".continue()<CR>')
+-- map('n', '<F8>', ':lua require"dap".step_over()<CR>')
+-- map('n', '<F7>', ':lua require"dap".step_into()<CR>')
+-- map('n', '<S-F8>', ':lua require"dap".step_out()<CR>')
+-- map('n', '<leader>b', ':lua require"dap".toggle_breakpoint()<CR>')
+-- map('n', '<leader>B', ':lua require"dap".set_breakpoint(vim.fn.input("Condition: "))<CR>')
+-- map('n', '<leader>bl', ':lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log: "))<CR>')
+-- map('n', '<leader>dr', ':lua require"dap".repl.open()<CR>')
+
+-- map("n", "<leader>tm", function() run_java_test_method() end)
+-- map("n", "<leader>TM", function() run_java_test_method(true) end)
+-- map("n", "<leader>tc", function() run_java_test_class() end)
+-- map("n", "<leader>TC", function() run_java_test_class(true) end)
+-- map("n", "<F9>", function() run_spring_boot() end)
+-- map("n", "<F10>", function() run_spring_boot(true) end)
+
+-- -- bufferline
+-- map('n', '<leader>nq', ':bdelete!<CR>')
+-- map('n', '<leader>np', ':BufferLineTogglePin<CR>')
+-- map('n', '<leader>ns', ':BufferLinePick<CR>')
+-- map('n', '<C-h>', ':BufferLineCyclePrev<CR>')
+-- map('n', '<C-l>', ':BufferLineCycleNext<CR>')

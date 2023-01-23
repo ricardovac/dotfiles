@@ -4,13 +4,17 @@ local map = vim.keymap.set
 vim.opt.signcolumn = "yes"
 
 -- LSP mappings, also see telescope.lua
--- map("n", "<leader>h", "<cmd>lua vim.lsp.buf.Hover()<CR>")
--- map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
--- map("n", "<leader>sh", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
-map("n", "<leader>ca", vim.lsp.buf.code_action)
--- map("n", "<space>q", vim.diagnostic.setqflist)
-map("n", "<leader>rn", vim.lsp.buf.rename)
-map("n", "K", vim.lsp.buf.hover)
+local bufopts = { noremap=true, silent=true, buffer=bufnr }
+local opts = { noremap=true, silent=true }
+
+map("n", "<leader>sh", vim.lsp.buf.signature_help)
+map("n", "<leader>ca", vim.lsp.buf.code_action, {desc = "lsp code action"})
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "variable rename" })
+map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
+map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
+map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
+map("n", "J", vim.lsp.buf.hover, bufopts)
+map("n", "K", vim.diagnostic.open_float, opts)
 
 -- map("n", "<C-s>", "<cmd>lua vim.lsp.buf.format()<CR>")
 vim.keymap.set('n', '<C-s>', function() vim.lsp.buf.format { async = true } vim.cmd.w {} end)
@@ -31,7 +35,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'rust_analyzer', 'cssls', 'tsserver' }
+local servers = { 'rust_analyzer', 'cssls', 'tsserver', 'gopls' }
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
     on_attach = on_attach,

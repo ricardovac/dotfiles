@@ -4,9 +4,10 @@ vim.g.mapleader = ' '
 
 vim.o.completeopt = 'menuone,noselect'
 -- opt.mouse = nil
-opt.clipboard = 'unnamedplus' -- Alias unnamed register to the + register, which is the X Window clipboard.
+-- opt.clipboard = 'unnamedplus' -- Alias unnamed register to the + register, which is the X Window clipboard.
 
 opt.history = 9000 -- Sets how many lines of history VIM has to remember
+opt.mouse = "a"
 
 opt.undolevels = 2000 -- use many levels of undo
 opt.undofile = true -- persistent
@@ -38,7 +39,9 @@ opt.backup = false -- Don't make a backup before overwriting a file.
 opt.writebackup = false -- And again.
 opt.swapfile = false -- Use an SCM instead of swap files
 
-opt.listchars = 'tab:╶─╴,lead:·,trail:▒,eol:↲,extends:►,precedes:◄'
+-- opt.listchars = 'tab:╶─╴,lead:·,trail:▒,eol:↲,extends:►,precedes:◄'
+opt.listchars = 'tab: > ,eol:¬'
+opt.list = false
 
 -- Tabs and indenting
 opt.expandtab = true

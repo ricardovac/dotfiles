@@ -199,16 +199,29 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
--- nvim-cmp highlight groups.
-local Group = require("colorbuddy.group").Group
-local g = require("colorbuddy.group").groups
-local s = require("colorbuddy.style").styles
+-- require("cmp").setup({
+--   enabled = function()
+--     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+--         or require("cmp_dap").is_dap_buffer()
+--   end
+-- })
 
-Group.new("CmpItemAbbr", g.Comment)
-Group.new("CmpItemAbbrDeprecated", g.Error)
-Group.new("CmpItemAbbrMatchFuzzy", g.CmpItemAbbr.fg:dark(), nil, s.italic)
-Group.new("CmpItemKind", g.Special)
-Group.new("CmpItemMenu", g.NonText)
+-- require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+--   sources = {
+--     { name = "dap" },
+--   },
+-- })
+
+-- nvim-cmp highlight groups.
+-- local Group = require("colorbuddy.group").Group
+-- local g = require("colorbuddy.group").groups
+-- local s = require("colorbuddy.style").styles
+
+-- Group.new("CmpItemAbbr", g.Comment)
+-- Group.new("CmpItemAbbrDeprecated", g.Error)
+-- Group.new("CmpItemAbbrMatchFuzzy", g.CmpItemAbbr.fg:dark(), nil, s.italic)
+-- Group.new("CmpItemKind", g.Special)
+-- Group.new("CmpItemMenu", g.NonText)
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline({ '/', '?' }, {

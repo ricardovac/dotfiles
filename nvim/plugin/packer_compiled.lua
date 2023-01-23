@@ -79,6 +79,19 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["auto-pairs"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
+  },
+  ["cellular-automaton.nvim"] = {
+    commands = { "CellularAutomaton" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/opt/cellular-automaton.nvim",
+    url = "https://github.com/eandrju/cellular-automaton.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -104,30 +117,10 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/cmp-treesitter",
     url = "https://github.com/ray-x/cmp-treesitter"
   },
-  cmp_luasnip = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
-    url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["colorbuddy.vim"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/colorbuddy.vim",
-    url = "https://github.com/tjdevries/colorbuddy.vim"
-  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
-  },
-  ["gruvbuddy.nvim"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim",
-    url = "https://github.com/tjdevries/gruvbuddy.nvim"
-  },
-  ["iswap.nvim"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/iswap.nvim",
-    url = "https://github.com/mizlan/iswap.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
@@ -154,11 +147,10 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["nvim-autopairs"] = {
-    config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
+  ["null-ls.nvim"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -175,25 +167,35 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-go"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
+    url = "https://github.com/leoluz/nvim-dap-go"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
+  },
+  ["nvim-hlslens"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-hlslens",
+    url = "https://github.com/kevinhwang91/nvim-hlslens"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-metals"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-metals",
-    url = "https://github.com/scalameta/nvim-metals"
-  },
   ["nvim-retrail"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-retrail",
     url = "https://github.com/zakharykaplan/nvim-retrail"
-  },
-  ["nvim-scrollbar"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
-    url = "https://github.com/petertriho/nvim-scrollbar"
   },
   ["nvim-surround"] = {
     loaded = true,
@@ -223,6 +225,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    config = { "\27LJ\2\nÂ\1\0\0\5\0\v\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\n\0B\0\1\1K\0\1\0\tload\15highlights\vVisual\1\0\0\1\0\1\abg\f#4a4a4a\vcolors\1\0\2\ngreen\f#00ffaa\tgrey\f#878787\1\0\1\nstyle\vdarker\nsetup\fonedark\frequire\0" },
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -254,6 +262,11 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
   },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -263,11 +276,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -279,15 +287,26 @@ _G.packer_plugins = {
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-gh-line",
     url = "https://github.com/ruanyl/vim-gh-line"
   },
-  ["vim-gist"] = {
-    loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-gist",
-    url = "https://github.com/mattn/vim-gist"
-  },
   ["vim-ripgrep"] = {
     loaded = true,
     path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-ripgrep",
     url = "https://github.com/jremmen/vim-ripgrep"
+  },
+  ["vim-taste"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-taste",
+    url = "https://github.com/jordwalke/vim-taste"
+  },
+  ["wrapping.nvim"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rwrapping\frequire\0" },
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/wrapping.nvim",
+    url = "https://github.com/andrewferrier/wrapping.nvim"
+  },
+  ["yanky.nvim"] = {
+    loaded = true,
+    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/yanky.nvim",
+    url = "https://github.com/gbprod/yanky.nvim"
   }
 }
 
@@ -296,10 +315,14 @@ time([[Defining packer_plugins]], false)
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nN\0\0\5\0\6\0\b6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0B\0\4\1K\0\1\0\24:NvimTreeToggle<cr>\6-\6n\bset\vkeymap\bvim\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
+-- Config for: wrapping.nvim
+time([[Config for wrapping.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rwrapping\frequire\0", "config", "wrapping.nvim")
+time([[Config for wrapping.nvim]], false)
+-- Config for: onedark.nvim
+time([[Config for onedark.nvim]], true)
+try_loadstring("\27LJ\2\nÂ\1\0\0\5\0\v\0\0186\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\n\0B\0\1\1K\0\1\0\tload\15highlights\vVisual\1\0\0\1\0\1\abg\f#4a4a4a\vcolors\1\0\2\ngreen\f#00ffaa\tgrey\f#878787\1\0\1\nstyle\vdarker\nsetup\fonedark\frequire\0", "config", "onedark.nvim")
+time([[Config for onedark.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -307,8 +330,15 @@ pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle' }, _G.packer_plugins)
+          require('packer.load')({'nvim-tree.lua'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('NvimTreeToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'CellularAutomaton', function(cmdargs)
+          require('packer.load')({'cellular-automaton.nvim'}, { cmd = 'CellularAutomaton', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'cellular-automaton.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CellularAutomaton ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 
