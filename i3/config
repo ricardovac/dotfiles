@@ -16,7 +16,7 @@ set $mod Mod1
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Iosevka 10
-# Before i3 v4.8, we used to recommend this one as the default:
+# Before i3 v4.8, we kjed to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
@@ -27,7 +27,9 @@ font pango:Iosevka 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
+
+bindsym $mod+Shift+s exec flatpak run --command=sh com.spotify.Client -c 'eval "$(sed s#LD_PRELOAD=#LD_PRELOAD=$HOME/.spotify-adblock/spotify-adblock.so:#g /app/bin/spotify)"'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -147,8 +149,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-workspace 1 output HDMI-1
-workspace 4 output DVI-D-1
+workspace 1 output HDMI-0
+workspace 4 output DVI-D-0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -158,7 +160,10 @@ smart_gaps on
 smart_borders on 
 hide_edge_borders smart
 
-for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 1
+
+for_window [ class="^.*"] border pixel 1
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4b68ad #2c3e4b #eeeeee #282c34   #4b68ad
@@ -169,22 +174,46 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #fffff
 
-bar {
-        position top
-        status_command i3status 
-        separator_symbol " / "
-        colors {
-            background #24272e
-            statusline #abb2bf
+# Define colors variables: 
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#212121
+set $grey		#b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+set $orange #FFCC80
+# define colors for windows:
+#class		        	border		bground		text		indicator	child_border
+client.focused		    $grey	$darkgrey 	$white		$purple		$grey
+#client.unfocused	    $darkblue	$darkgrey 	$grey		$purple		$darkgrey
+#client.focused_inactive	$darkblue	$darkgrey 	$grey		$purple		$black
+#client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
-            focused_workspace  #73b2e6 #282c34
-            active_workspace   #eeeeee #333333
-            inactive_workspace #888888 #282c34
-            urgent_workspace   #ffffff #e06c75
-        }
+bar {
+    font pango:JetBrainsMono Nerd Font, Awesome 12
+    position top
+    status_command i3status-rs ~/.config/i3status-rs/config.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
-exec --no-startup-id xrandr --output HDMI-1 --primary --left-of DVI-D-1
-exec --no-startup-id xinput --set-prop 10 'libinput Accel Speed' -0.60
-exec --no-startup-id xset r rate 220 35
-exec --no-startup-id feh --bg-scale ~/Imagens/leaves.png
+
+exec --no-startup-id xrandr --output HDMI-0 --rate 74.97 --primary --left-of DVI-D-0
+exec --no-startup-id xinput --set-prop 14 'libinput Accel Speed' -0.78
+exec --no-startup-id xset r rate 195 30
+exec --no-startup-id feh --bg-fill ~/Imagens/anime2.png
+# exec --no-startup-id $HOME/.config/polybar/launch.sh
+# exec --no-startup-id $HOME/.config/i3/xborder/xborders --smart-hide-border --config $HOME/.config/i3/xborder/example_config.json
+# exec_always --no-startup-id picom --experimental-backends --backend glx --xrender-sync-fence
