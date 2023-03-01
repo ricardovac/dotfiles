@@ -21,6 +21,20 @@ vim.keymap.set('n', '<C-s>', function() vim.lsp.buf.format { async = true } vim.
 map("n", "[c", vim.diagnostic.goto_prev)
 map("n", "]c", vim.diagnostic.goto_next)
 
+vim.diagnostic.config({
+    underline = true,
+    signs = true,
+    virtual_text = false,
+    float = {
+        show_header = true,
+        source = 'if_many',
+        border = 'rounded',
+        focusable = false,
+    },
+    update_in_insert = false, -- default to false
+    severity_sort = false, -- default to false
+})
+
 local lsp_format = require("lsp-format")
 lsp_format.setup {}
 
@@ -51,22 +65,29 @@ end
 --   capabilities = capabilities
 -- }
 
-lspconfig.sumneko_lua.setup {
+-- TypeScript
+lspconfig.tsserver.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = { diagnostics = { globals = { 'vim' }, }, },
-    telemetry = { enable = false, },
-  }
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
 }
 
--- local null_ls = require("null-ls")
--- null_ls.setup({
---   sources = {
---     null_ls.builtins.formatting.prettierd.with({
---       filetypes = { "typescript", "scss", "css", "javascript" },
---     }),
---     -- null_ls.builtins.diagnostics.eslint,
---   },
---   on_attach = on_attach, -- async format typescript on save with prettierd
--- })
+-- lspconfig.sumneko_lua.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = { diagnostics = { globals = { 'vim' }, }, },
+--     telemetry = { enable = false, },
+--   }
+-- }
+
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "typescript", "scss", "css", "javascript" },
+    }),
+    -- null_ls.builtins.diagnostics.eslint,
+  },
+  on_attach = on_attach, -- async format typescript on save with prettierd
+})

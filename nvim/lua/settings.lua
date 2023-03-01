@@ -1,10 +1,10 @@
 local opt = vim.opt
 
 vim.g.mapleader = ' '
+-- vim.opt.guicursor = ""
 
 vim.o.completeopt = 'menuone,noselect'
--- opt.mouse = nil
--- opt.clipboard = 'unnamedplus' -- Alias unnamed register to the + register, which is the X Window clipboard.
+opt.clipboard = 'unnamedplus' -- Alias unnamed register to the + register, which is the X Window clipboard.
 
 opt.history = 9000 -- Sets how many lines of history VIM has to remember
 opt.mouse = "a"
@@ -50,7 +50,6 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.shiftround = true
 opt.smartindent = true
--- opt.number = false
 
 opt.gdefault = true -- replace all occurences of the line
 

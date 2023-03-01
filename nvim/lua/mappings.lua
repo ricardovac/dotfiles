@@ -119,9 +119,9 @@ map("n", "<leader>df", ':cd ~/.config/nvim/<CR>')
 -- map("n", "<F9>", function() run_spring_boot() end)
 -- map("n", "<F10>", function() run_spring_boot(true) end)
 
--- -- bufferline
--- map('n', '<leader>nq', ':bdelete!<CR>')
--- map('n', '<leader>np', ':BufferLineTogglePin<CR>')
--- map('n', '<leader>ns', ':BufferLinePick<CR>')
--- map('n', '<C-h>', ':BufferLineCyclePrev<CR>')
--- map('n', '<C-l>', ':BufferLineCycleNext<CR>')
+-- bufferline
+map('n', '<leader>nq', ':bdelete!<CR>')
+map('n', '<leader>np', ':BufferLineTogglePin<CR>')
+map('n', '<leader>ns', ':BufferLinePick<CR>')
+map('n', '<C-h>', ':BufferLineCyclePrev<CR>')
+map('n', '<C-l>', ':BufferLineCycleNext<CR>')

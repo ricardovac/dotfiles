@@ -1,7 +1,6 @@
 require("nvim-tree").setup({
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = true,
   ignore_ft_on_setup = {'dashboard'},
   open_on_tab = false,
   update_cwd = true,
@@ -12,7 +11,7 @@ require("nvim-tree").setup({
   },
   sort_by = "name",
   update_focused_file = {
-    enable = true
+    enable = true,
   },
   view = {
     width = 25,
@@ -25,9 +24,12 @@ require("nvim-tree").setup({
     indent_markers = {
       enable = true,
       icons = {
-        corner = "└ ",
-        edge = "│ ",
-        item = "│ ",
+        -- corner = "└ ",
+        -- edge = "│ ",
+        -- item = "│  ",
+        corner = " ",
+        edge = " ",
+        item = "  ",
         none = "  ",
       },
     },

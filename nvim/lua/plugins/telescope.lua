@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 local builtin = require('telescope.builtin')
+require("telescope").load_extension("ui-select")
 
 map('n', '<leader>mf', builtin.find_files, {})
 map('n', '<leader>md', builtin.oldfiles, {})
@@ -8,6 +9,7 @@ map('n', '<leader>a', builtin.live_grep, {})
 map('n', '<leader>pf', builtin.buffers, {})
 map('n', '<leader>H', builtin.help_tags, {})
 map('n', '<leader>za', builtin.grep_string, {})
+map('n', '<leader>co', builtin.colorscheme, {})
 map('n', 'Q', builtin.commands, {})
 map('n', 'qq', builtin.command_history, {})
 map('n', 'q/', builtin.search_history, {})
@@ -37,7 +39,10 @@ tel.setup {
     layout_strategy = "vertical",
     -- Default configuration for telescope goes here:
     -- config_key = value,
-    file_ignore_patterns = { "node_modules", "target" },
+    file_ignore_patterns = { 
+      "node_modules",
+      "target"
+    },
     mappings = {
       i = {
         ["<C-e>"] = "move_selection_previous",
@@ -68,6 +73,11 @@ tel.setup {
       override_file_sorter = true, -- override the file sorter
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      }
     }
   },
   winblend = 0,
@@ -76,3 +86,4 @@ tel.setup {
   color_devicons = true,
 }
 tel.load_extension 'fzf'
+

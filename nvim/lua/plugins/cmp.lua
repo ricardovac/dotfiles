@@ -22,8 +22,8 @@ cmp.setup {
   --   entries = "custom" -- can be "custom", "wildmenu" or "native"
   -- },
   sources = {
-    { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "nvim_lsp" },
     { name = "treesitter" },
     { name = "path" },
     { name = 'buffer', option = {
@@ -115,58 +115,6 @@ cmp.setup {
       select = false,
     },
   },
-
-  -- mapping = cmp.mapping.preset.insert({
-  -- ["<C-e>"] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     vim.api.nvim_command('write')
-  --     cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-  --   else
-  --     fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- ['<Tab>'] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     cmp.select_next_item()
-  --   elseif luasnip.expand_or_jumpable() then
-  --     luasnip.expand_or_jump()
-  --   else
-  --     fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- ["<C-e>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-  -- -- ['<CR>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false, },
-  -- ['<CR>'] = cmp.mapping.confirm {
-  --   behavior = cmp.ConfirmBehavior.Replace,
-  --   select = true,
-  -- },
-  -- ['<C-Space>'] = cmp.mapping.complete { behavior = cmp.ConfirmBehavior.Replace, select = true, },
-  -- -- ["<C-n>"] = cmp.mapping.select_next_item(),
-  -- -- ["<C-k>"] = cmp.mapping.select_prev_item(),
-  -- ['<C-n>'] = cmp.mapping(function()
-  --   if cmp.visible() then
-  --     cmp.select_next_item()
-  --   else
-  --     -- fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- ['<C-k>'] = cmp.mapping(function()
-  --   if cmp.visible() then
-  --     cmp.select_prev_item()
-  --   else
-  --     -- fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     cmp.select_prev_item()
-  --   elseif luasnip.jumpable(-1) then
-  --     luasnip.jump(-1)
-  --   else
-  --     fallback()
-  --   end
-  -- end, { 'i', 's' }),
-  -- }),
   formatting = {
     format = function(entry, vim_item)
       if vim.tbl_contains({ 'path' }, entry.source.name) then
@@ -183,11 +131,18 @@ cmp.setup {
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
+      require('luasnip').filetype_extend("javascript", { "javascriptreact" })
+      require('luasnip').filetype_extend("typescript", { "typescriptreact" })
+      require('luasnip').filetype_extend("javascript", { "html" })
     end,
   },
   experimental = {
     native_menu = false,
     ghost_text = true
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   }
 }
 

@@ -35,19 +35,19 @@ require("nvim-surround").setup({})
 require 'hlslens'.setup({})
 
 
-require 'yanky'.setup({
-  highlight = {
-    timer = 200
-  }
-})
-require 'telescope'.load_extension 'yank_history'
-map("n", "<leader>mp", ":Telescope yank_history<cr>")
-map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-map("n", "<c-n>", "<Plug>(YankyCycleForward)")
-map("n", "<c-p>", "<Plug>(YankyCycleBackward)")
-map("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
-map("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+-- require 'yanky'.setup({
+--   highlight = {
+--     timer = 200
+--   }
+-- })
+-- require 'telescope'.load_extension 'yank_history'
+-- map("n", "<leader>mp", ":Telescope yank_history<cr>")
+-- map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+-- map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+-- map("n", "<c-n>", "<Plug>(YankyCycleForward)")
+-- map("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+-- map("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+-- map("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
 
 
 -- ripgrep
