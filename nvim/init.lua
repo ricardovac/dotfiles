@@ -14,28 +14,9 @@ require 'packer'.startup({ function(use)
   use 'tpope/vim-commentary'
   use 'danro/rename.vim'
 
-  -- Barbecure
-  use 'SmiteshP/nvim-navic'
-  use({
-  "utilyre/barbecue.nvim",
-  tag = "*",
-  requires = {
-    "neovim/nvim-lspconfig",
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons", -- optional dependency
-  },
-    after = "nvim-web-devicons", -- keep this if you're using NvChad
-    config = function()
-      require("barbecue").setup()
-    end,
-  })
-
-  -- Theme
-  use 'lunarvim/darkplus.nvim'
-
   use 'simrat39/inlay-hints.nvim'
-  use "lukas-reineke/indent-blankline.nvim"
   use 'nvim-lualine/lualine.nvim'
+  use 'norcalli/nvim-colorizer.lua'
   use 'kyazdani42/nvim-web-devicons'
   use 'L3MON4D3/LuaSnip'
   use 'jiangmiao/auto-pairs'
@@ -51,11 +32,12 @@ require 'packer'.startup({ function(use)
   })
 
   -- Debugging golang
-  use 'mfussenegger/nvim-dap' 
-  use 'leoluz/nvim-dap-go'
-  use 'rcarriga/nvim-dap-ui'
-  use 'theHamsta/nvim-dap-virtual-text'
-  use 'nvim-telescope/telescope-dap.nvim'
+  -- use 'mfussenegger/nvim-dap' 
+  -- use 'leoluz/nvim-dap-go'
+  -- use 'mfussenegger/nvim-jdtls'
+  -- use 'rcarriga/nvim-dap-ui'
+  -- use 'theHamsta/nvim-dap-virtual-text'
+  -- use 'nvim-telescope/telescope-dap.nvim'
 
   use({
     "andrewferrier/wrapping.nvim",
@@ -67,10 +49,10 @@ require 'packer'.startup({ function(use)
   use 'lukas-reineke/lsp-format.nvim' -- async code formatting
   use 'jose-elias-alvarez/null-ls.nvim' -- hook into nvim LSP
   use 'lewis6991/gitsigns.nvim'
-  use 'petertriho/nvim-scrollbar'
-  use 'psliwka/vim-smoothie'
+  use 'tjdevries/colorbuddy.nvim'
+  use 'tjdevries/gruvbuddy.nvim'
 
-  use 'kevinhwang91/nvim-hlslens'
+  -- use 'kevinhwang91/nvim-hlslens'
   use 'zakharykaplan/nvim-retrail' -- trim trail whitespace
   use({ "nvim-tree/nvim-tree.lua", opt = true, cmd = { "NvimTreeToggle" },
     setup = function() vim.keymap.set('n', '-', ':NvimTreeToggle<cr>') end,
@@ -82,7 +64,6 @@ end,
 
 require("mason").setup()
 
-require('theme')
 require('settings')
 require('mappings')
 require('commands')
@@ -90,15 +71,17 @@ require('functions')
 require('project')
 require('lsp')
 
-require('plugins.lualine')
+-- require('plugins.lualine')
 require('plugins.cmp')
-require('plugins.indentline')
+require('plugins.colorscheme')
+-- require('plugins.indentline')
 require('plugins.inlay-hints')
 require('plugins.treesitter')
 require('plugins.telescope')
 require('plugins.unimpaired')
+
 require('plugins.others')
-require('plugins.scrollbar')
-require('plugins.smoothie')
+-- require('plugins.scrollbar')
+-- require('plugins.smoothie')
 -- require('plugins.dap')
-require('plugins.dap-go')
+-- require('plugins.dap-go')

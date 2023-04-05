@@ -7,6 +7,8 @@ map('n', '!', ':!')
 -- Toggle nowrap
 map('n', '<leader>nw', ':set nowrap!<cr>', { silent = true })
 
+map('n', '<leader>]', ':!g++ -Wall % && ./a.out<cr>')
+
 -- Close other windows
 map('n', '<leader>wo', ':only<cr>')
 

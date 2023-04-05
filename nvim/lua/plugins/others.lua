@@ -32,7 +32,7 @@ require("nvim-surround").setup({})
 -- vim.notify = require("notify")
 
 
-require 'hlslens'.setup({})
+-- require 'hlslens'.setup({})
 
 
 -- require 'yanky'.setup({

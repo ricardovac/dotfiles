@@ -28,7 +28,8 @@ vim.diagnostic.config({
     float = {
         show_header = true,
         source = 'if_many',
-        border = 'rounded',
+        -- border = 'rounded',
+        style = 'minimal',
         focusable = false,
     },
     update_in_insert = false, -- default to false
@@ -49,7 +50,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'rust_analyzer', 'cssls', 'tsserver', 'gopls' }
+local servers = { 'rust_analyzer', 'cssls', 'tsserver', 'gopls', 'clangd', 'pyright' }
 for _, server in ipairs(servers) do
   lspconfig[server].setup {
     on_attach = on_attach,
@@ -72,6 +73,10 @@ lspconfig.tsserver.setup {
   cmd = { "typescript-language-server", "--stdio" }
 }
 
+lspconfig.clangd.setup {
+
+}
+
 -- lspconfig.sumneko_lua.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
@@ -81,13 +86,13 @@ lspconfig.tsserver.setup {
 --   }
 -- }
 
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.prettier.with({
-      filetypes = { "typescript", "scss", "css", "javascript" },
-    }),
-    -- null_ls.builtins.diagnostics.eslint,
-  },
-  on_attach = on_attach, -- async format typescript on save with prettierd
-})
+-- local null_ls = require("null-ls")
+-- null_ls.setup({
+--   sources = {
+--     null_ls.builtins.formatting.prettier.with({
+--       filetypes = { "typescript", "scss", "css", "javascript" },
+--     }),
+--     -- null_ls.builtins.diagnostics.eslint,
+--   },
+--   on_attach = on_attach, -- async format typescript on save with prettierd
+-- })
