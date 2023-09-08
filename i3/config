@@ -11,11 +11,11 @@
 
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
+Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Iosevka 10
+font pango:TerminusCyr 10
 # Before i3 v4.8, we kjed to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -123,6 +123,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# bindsym $mod+Tab workspace back_and_forth
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -158,12 +160,13 @@ workspace 4 output DVI-D-0
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 smart_borders on 
-hide_edge_borders smart
+hide_edge_borders both
 
-gaps inner 10
-gaps outer 1
+gaps inner 0
+gaps outer 0
 
 for_window [ class="^.*"] border pixel 1
+for_window [class="com."] floating enable;
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4b68ad #2c3e4b #eeeeee #282c34   #4b68ad
@@ -195,7 +198,8 @@ client.focused		    $grey	$darkgrey 	$white		$purple		$grey
 #client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
 bar {
-    font pango:JetBrainsMono Nerd Font, Awesome 12
+    font pango:JetBrains Mono 10
+    tray_output HDMI-0
     position top
     status_command i3status-rs ~/.config/i3status-rs/config.toml
     colors {
@@ -209,11 +213,10 @@ bar {
     }
 }
 
-
 exec --no-startup-id xrandr --output HDMI-0 --rate 74.97 --primary --left-of DVI-D-0
-exec --no-startup-id xinput --set-prop 14 'libinput Accel Speed' -0.78
+exec --no-startup-id xinput --set-prop 8 'libinput Accel Speed' -0.78
 exec --no-startup-id xset r rate 195 30
-exec --no-startup-id feh --bg-fill ~/Imagens/anime2.png
+exec --no-startup-id feh --bg-fill ~/Imagens/night.jpg
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id $HOME/.config/i3/xborder/xborders --smart-hide-border --config $HOME/.config/i3/xborder/example_config.json
 # exec_always --no-startup-id picom --experimental-backends --backend glx --xrender-sync-fence
