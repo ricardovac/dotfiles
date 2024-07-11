@@ -4,7 +4,7 @@ return {
 		lazy = true,
 		config = function()
 			require("illuminate").configure({
-        enabled = false,
+				enabled = false,
 				under_cursor = false,
 				filetypes_denylist = {
 					"DressingSelect",

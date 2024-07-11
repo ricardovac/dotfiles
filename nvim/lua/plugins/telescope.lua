@@ -1,44 +1,53 @@
 return {
 	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-		cond = vim.fn.executable("make") == 1,
-	},
-	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		lazy = true,
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = vim.fn.executable("make") == 1,
-			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable("make") == 1, build = "make" },
+			{ "nvim-lua/plenary.nvim" },
 		},
-		config = function()
+		cmd = "Telescope",
+		event = "BufReadPre",
+		opts = function()
 			local actions = require("telescope.actions")
-
-			require("telescope").setup({
+			return {
 				defaults = {
+					path_display = { "truncate" },
+					sorting_strategy = "ascending",
+					layout_config = {
+						horizontal = { prompt_position = "top", preview_width = 0.55 },
+						vertical = { mirror = false },
+						width = 0.87,
+						height = 0.80,
+						preview_cutoff = 120,
+					},
 					mappings = {
 						i = {
-							["<C-k>"] = actions.move_selection_previous,
-							["<C-j>"] = actions.move_selection_next,
-							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-							["<C-x>"] = actions.delete_buffer,
+							["<C-j>"] = actions.cycle_history_next,
+							["<C-k>"] = actions.cycle_history_prev,
+							["<C-n>"] = actions.move_selection_next,
+							["<C-p>"] = actions.move_selection_previous,
 						},
+						n = { q = actions.close },
 					},
-					file_ignore_patterns = {
-						"node_modules",
-						"yarn.lock",
-						".git",
+				},
+			}
+		end,
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		config = function()
+			-- This is your opts table
+			require("telescope").setup({
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
 					},
-					hidden = true,
 				},
 			})
-
-			-- Enable telescope fzf native, if installed
-			pcall(require("telescope").load_extension, "fzf")
+			require("telescope").load_extension("ui-select")
 		end,
+		event = "BufReadPre",
+		lazy = true,
 	},
 }
