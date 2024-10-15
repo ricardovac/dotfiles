@@ -16,10 +16,13 @@ return {
 				-- nvim-lspconfig
 				ensure_installed = {
 					"biome",
-					"bashls",
 					"dockerls",
 					"lua_ls",
-					"pyright",
+					"gopls",
+					"ts_ls",
+					"graphql",
+					"volar",
+					"tailwindcss",
 				},
 			})
 		end,
@@ -37,15 +40,26 @@ return {
 
 			-- Each one of these are the ones added in mason-lspconfig.nvim
 			lspconfig.biome.setup(setup_options)
-			lspconfig.bashls.setup(setup_options)
+			lspconfig.graphql.setup(setup_options)
 			lspconfig.dockerls.setup(setup_options)
 			lspconfig.lua_ls.setup(setup_options)
-			lspconfig.pyright.setup(setup_options)
+			lspconfig.gopls.setup(setup_options)
+			lspconfig.ts_ls.setup(setup_options)
+			lspconfig.tailwindcss.setup(setup_options)
+
+			lspconfig.volar.setup({
+				capabilities = capabilities,
+				init_options = {
+					vue = {
+						hybridMode = false,
+					},
+				},
+			})
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set("n", "<space>of", vim.diagnostic.open_float)
-			vim.keymap.set("n", "<space>l", vim.diagnostic.setloclist)
+			vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float)
+			vim.keymap.set("n", "<leader>l", vim.diagnostic.setloclist)
 
 			vim.keymap.set("n", "]e", vim.diagnostic.goto_next)
 			vim.keymap.set("n", "[e", vim.diagnostic.goto_prev)

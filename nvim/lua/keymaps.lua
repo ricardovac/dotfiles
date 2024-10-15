@@ -1,4 +1,4 @@
-local illuminate = require("illuminate")
+-- local illuminate = require("illuminate")
 local map = require("utils").map
 
 -- Set space as the global leader
@@ -9,6 +9,8 @@ map("i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" })
 -- File Manager
 map("n", "<leader>e", "<cmd>Neotree toggle<cr>")
 
+map("n", "<leader>E", "<cmd>Neotree action=focus<cr>")
+
 -- Save
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
@@ -17,29 +19,19 @@ map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit", silent = false })
 -- Hide search results
 map("n", "<leader>no", "<cmd>noh<cr>", { desc = "Hide search results" })
 
-map("n", "<C-m>", "<C-b>")
-
--- Comments
-map("n", "<leader>/", function()
-	require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)
-end, { desc = "Toggle comment" })
-map(
-	"v",
-	"<leader>/",
-	"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
-	{ desc = "Toggle comment for selection" }
-)
+-- map("n", "<C-m>", "<C-b>")
+map("n", "<C-m>", '<cmd>call smoothie#do("<C-B>")<cr>')
 
 -- Illuminate
-map("n", "<leader>]", function()
-	illuminate.goto_next_reference()
-	vim.api.nvim_feedkeys("zz", "n", false)
-end, { desc = "Illuminate: Go to next reference" })
+-- map("n", "<leader>]", function()
+-- 	illuminate.goto_next_reference()
+-- 	vim.api.nvim_feedkeys("zz", "n", false)
+-- end, { desc = "Illuminate: Go to next reference" })
 
-map("n", "<leader>[", function()
-	illuminate.goto_prev_reference()
-	vim.api.nvim_feedkeys("zz", "n", false)
-end, { desc = "Illuminate: Go to previous reference" })
+-- map("n", "<leader>[", function()
+-- illuminate.goto_prev_reference()
+-- 	vim.api.nvim_feedkeys("zz", "n", false)
+-- end, { desc = "Illuminate: Go to previous reference" })
 
 -- Buffers
 map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Go to next buffer" })
@@ -57,7 +49,7 @@ map(
 -- Telescope
 map("n", "<leader><leader>", require("telescope.builtin").buffers, { desc = "Go to next buffer" })
 map("n", "<leader>f", require("telescope.builtin").find_files, { desc = "Find files in current pwd" })
-map("n", "<leader>sy", require("telescope.builtin").lsp_document_symbols, { desc = "Find in symbols" })
+map("n", "<leader>s", require("telescope.builtin").lsp_document_symbols, { desc = "Find in symbols" })
 map("n", "<leader>a", require("telescope.builtin").live_grep, { desc = "Grep find" })
 
 -- Splits
@@ -68,6 +60,9 @@ map("n", "<C-l>", require("smart-splits").move_cursor_right)
 
 map("n", "<leader>|", "<cmd>vsplit<cr>", { desc = "Splits the window vertically" })
 map("n", "<leader>-", "<cmd>split<cr>", { desc = "Splits the window horizontally" })
+
+map("n", "L", "$")
+map("n", "H", "^")
 
 map("n", "<leader>lo", function()
 	vim.lsp.buf.code_action({

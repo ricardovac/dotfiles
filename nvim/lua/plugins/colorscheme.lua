@@ -1,9 +1,9 @@
 return {
 	{
-		"blazkowolf/gruber-darker.nvim",
-		-- you could do this, or use the standard vimscript `colorscheme sunburn`
+		"Th3Whit3Wolf/one-nvim",
+		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("gruber-darker")
+			vim.cmd([[colorscheme one-nvim]]) -- modus_operandi, modus_vivendi
 		end,
 	},
 }
